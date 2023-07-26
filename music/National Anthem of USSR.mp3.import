@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/National Anthem of USSR.mp3-d7f59607bf238a31de7a179b76a57ab2.mp3str"
+
+[deps]
+
+source_file="res://music/National Anthem of USSR.mp3"
+dest_files=[ "res://.import/National Anthem of USSR.mp3-d7f59607bf238a31de7a179b76a57ab2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

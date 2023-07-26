@@ -1,0 +1,1128 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scene/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scene/world/Tree_1.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://scene/weapons/ammo_pickup/ammo_pickup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scene/world/tank.tscn" type="PackedScene" id=4]
+
+[sub_resource type="ProceduralSky" id=1]
+sky_top_color = Color( 0.964706, 0.976471, 1, 1 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.815686, 0.694118, 0.45098, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.0901961, 0.376471, 0.478431, 1 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.588235, 0.435294, 0.2, 1 )
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.2, 0.588235, 0.235294, 1 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.329412, 0.113725, 0.0313726, 1 )
+
+[node name="World_03" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="Obstacles" type="CSGCombiner" parent="."]
+use_collision = true
+
+[node name="Ground" type="CSGBox" parent="Obstacles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1325, 0 )
+width = 100.0
+depth = 90.0
+material = SubResource( 3 )
+
+[node name="CSGBox" type="CSGBox" parent="Obstacles"]
+transform = Transform( 1, 0, 0, 0, 6.67539, 0, 0, 0, 44.5042, -48.5, 6.4761, 0 )
+material = SubResource( 4 )
+
+[node name="CSGBox2" type="CSGBox" parent="Obstacles"]
+transform = Transform( 1, 0, 0, 0, 6.67539, 0, 0, 0, 44.5042, 48.6716, 6.4761, 0 )
+material = SubResource( 4 )
+
+[node name="CSGBox8" type="CSGBox" parent="Obstacles"]
+transform = Transform( -0.432642, 0, 0.00970451, 0, 2.90462, 0, 0.00146925, 0, -2.58985, 39.6246, 2.97923, 11.9997 )
+depth = 1.5269
+material = SubResource( 4 )
+
+[node name="CSGBox9" type="CSGBox" parent="Obstacles"]
+transform = Transform( -0.432642, 0, 0.00970451, 0, 2.90462, 0, 0.00146925, 0, -2.58985, 39.6246, 4.94459, 7.93226 )
+height = 0.650335
+depth = 1.67732
+material = SubResource( 4 )
+
+[node name="CSGBox7" type="CSGBox" parent="Obstacles"]
+transform = Transform( -0.432642, 0, 0.00970451, 0, 2.90462, 0, 0.00146925, 0, -2.58985, 39.6246, 2.97923, 3.95235 )
+depth = 1.59538
+material = SubResource( 4 )
+
+[node name="CSGBox6" type="CSGBox" parent="Obstacles"]
+transform = Transform( -0.000225831, 0, -4.36249, 0, 2.90462, 0, 0.432655, 0, -0.0443602, 43.6933, 2.97923, 13.5737 )
+material = SubResource( 4 )
+
+[node name="CSGBox5" type="CSGBox" parent="Obstacles"]
+transform = Transform( -0.000225698, 0, -4.35991, 0, 2.90291, 0, 0.588728, 0, -0.0603624, 43.6933, 2.97923, 2.51684 )
+material = SubResource( 4 )
+
+[node name="CSGBox3" type="CSGBox" parent="Obstacles"]
+transform = Transform( -0.00256797, 0, -49.6067, 0, 6.67539, 0, 0.999997, 0, -0.10253, 0.301724, 6.4761, 43.57 )
+material = SubResource( 4 )
+
+[node name="CSGBox4" type="CSGBox" parent="Obstacles"]
+transform = Transform( -0.00256797, 0, -49.6067, 0, 6.67539, 0, 0.999997, 0, -0.10253, 0.301724, 6.4761, -43.5592 )
+material = SubResource( 4 )
+
+[node name="Tree_1" type="MeshInstance" parent="Obstacles"]
+transform = Transform( 1.84277, 0, 3.81784, 0, 2.00012, 0, -3.42597, 0, 2.05354, -39.1414, 0, 7.7414 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.898051, 0, 0.439892, 0, 1, 0, -0.439892, 0, -0.898051, 45.6219, 0, 7.9121 )
+
+[node name="Trees" type="Spatial" parent="."]
+
+[node name="Tree_2" type="MeshInstance" parent="Trees"]
+transform = Transform( 2.12921, 0, 0, 0, 1.47333, 0, 0, 0, 2.33142, -45.2517, 0, 11.8371 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_3" type="MeshInstance" parent="Trees"]
+transform = Transform( 2.12921, 0, 0, 0, 1.47333, 0, 0, 0, 2.33142, -45.2517, 0, 18.3445 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_4" type="MeshInstance" parent="Trees"]
+transform = Transform( 2.12921, 0, 0, 0, 1.47333, 0, 0, 0, 2.33142, -45.2517, 0, 25.0083 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_5" type="MeshInstance" parent="Trees"]
+transform = Transform( 2.12921, 0, 0, 0, 1.47333, 0, 0, 0, 2.33142, -45.2517, 0, 31.5157 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_6" type="MeshInstance" parent="Trees"]
+transform = Transform( 2.12921, 0, 0, 0, 1.47333, 0, 0, 0, 2.33142, -45.2517, 0, 38.7693 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_33" type="MeshInstance" parent="Trees"]
+transform = Transform( 2.12921, 0, 0, 0, 1.47333, 0, 0, 0, 2.33142, -45.2517, 0, -32.9526 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_34" type="MeshInstance" parent="Trees"]
+transform = Transform( 2.12921, 0, 0, 0, 1.47333, 0, 0, 0, 2.33142, -45.2517, 0, -26.4453 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_35" type="MeshInstance" parent="Trees"]
+transform = Transform( 2.12921, 0, 0, 0, 1.47333, 0, 0, 0, 2.33142, -45.2517, 0, -19.7815 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_36" type="MeshInstance" parent="Trees"]
+transform = Transform( 2.12921, 0, 0, 0, 1.47333, 0, 0, 0, 2.33142, -45.2517, 0, -13.2741 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_37" type="MeshInstance" parent="Trees"]
+transform = Transform( 2.12921, 0, 0, 0, 1.47333, 0, 0, 0, 2.33142, -45.2517, 0, -6.02046 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_38" type="MeshInstance" parent="Trees"]
+transform = Transform( 2.12921, 0, 0, 0, 1.47333, 0, 0, 0, 2.33142, 40.9099, 0, -29.1163 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_39" type="MeshInstance" parent="Trees"]
+transform = Transform( 2.12921, 0, 0, 0, 1.47333, 0, 0, 0, 2.33142, 40.9099, 0, -22.609 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_40" type="MeshInstance" parent="Trees"]
+transform = Transform( 2.12921, 0, 0, 0, 1.47333, 0, 0, 0, 2.33142, 40.9099, 0, -15.9452 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_41" type="MeshInstance" parent="Trees"]
+transform = Transform( 2.12921, 0, 0, 0, 1.47333, 0, 0, 0, 2.33142, 40.9099, 0, -9.43779 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_42" type="MeshInstance" parent="Trees"]
+transform = Transform( 2.12921, 0, 0, 0, 1.47333, 0, 0, 0, 2.33142, 40.9099, 0, -2.18416 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_43" type="MeshInstance" parent="Trees"]
+transform = Transform( 2.12921, 0, 0, 0, 1.47333, 0, 0, 0, 2.33142, 40.9099, 0, 21.615 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_44" type="MeshInstance" parent="Trees"]
+transform = Transform( 2.12921, 0, 0, 0, 1.47333, 0, 0, 0, 2.33142, 40.9099, 0, 28.1224 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_45" type="MeshInstance" parent="Trees"]
+transform = Transform( 2.12921, 0, 0, 0, 1.47333, 0, 0, 0, 2.33142, 40.9099, 0, 35.376 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_7" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, -32.6211, 0, 41.6558 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_8" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, -26.1144, 0, 41.747 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_9" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, -19.4512, 0, 41.8403 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_10" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, -12.9445, 0, 41.9315 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_11" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, -5.69157, 0, 42.0332 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_12" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, 1.90676, 0, 41.6558 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_13" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, 8.41351, 0, 41.747 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_14" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, 15.0766, 0, 41.8403 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_15" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, 21.5834, 0, 41.9315 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_16" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, 27.844, 0, 42.0332 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_17" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, 34.7202, 0, 41.9315 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_18" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, 41.2423, 0, 42.0332 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_19" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, 47.4301, 0, 42.0332 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_20" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, -32.6211, 0, -36.1204 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_21" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, -26.1144, 0, -36.0292 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_22" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, -19.4512, 0, -35.9358 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_23" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, -12.9445, 0, -35.8446 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_24" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, -5.69157, 0, -35.743 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_25" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, 1.90676, 0, -36.1204 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_26" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, 8.41351, 0, -36.0292 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_27" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, 15.0766, 0, -35.9358 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_28" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, 21.5834, 0, -35.8446 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_29" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, 27.844, 0, -35.743 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_30" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, 34.7202, 0, -35.8446 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_31" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, 41.2423, 0, -35.743 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_32" type="MeshInstance" parent="Trees"]
+transform = Transform( 0.02984, 0, 2.33119, 0, 1.47333, 0, -2.129, 0, 0.0326738, 47.4301, 0, -35.743 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_1" type="MeshInstance" parent="Trees"]
+transform = Transform( 1.84277, 0, 3.81784, 0, 2.00012, 0, -3.42597, 0, 2.05354, -39.1414, 0, 7.7414 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles11/Obstacles2")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Tree_46" type="MeshInstance" parent="Trees"]
+transform = Transform( 1.23235, 0, 2.55317, 0, 2.00012, 0, -2.24674, 0, 1.34671, 0.344003, 13.1699, 4.51198 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../Obstacles11/Obstacles2")
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+material/2 = SubResource( 6 )
+material/3 = SubResource( 6 )
+material/4 = SubResource( 5 )
+material/5 = SubResource( 6 )
+material/6 = SubResource( 6 )
+material/7 = SubResource( 6 )
+material/8 = SubResource( 6 )
+material/9 = SubResource( 6 )
+material/10 = SubResource( 5 )
+material/11 = SubResource( 6 )
+material/12 = SubResource( 6 )
+
+[node name="Obstacles11" type="Spatial" parent="."]
+
+[node name="Obstacles2" type="CSGCombiner" parent="Obstacles11"]
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="Obstacles11/Obstacles2"]
+transform = Transform( 7.61529, 0, 0, 0, 1, 0, 0, 0, 2.94512, 0, 0.583543, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="CSGBox2" type="CSGBox" parent="Obstacles11/Obstacles2"]
+transform = Transform( 5.91529, 0, 0, 0, 1, 0, 0, 0, 2.33047, 0, 2.08635, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="CSGBox3" type="CSGBox" parent="Obstacles11/Obstacles2"]
+transform = Transform( 0.906867, 0, 0, 0, 5.40463, 0, 0, 0, 0.4716, 0, 8.17472, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="Obstacles3" type="CSGCombiner" parent="Obstacles11"]
+transform = Transform( 0.16063, 0, 0, 0, 0.461388, 0, 0, 0, 1.42955, -19.9573, 0, 0.596809 )
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="Obstacles11/Obstacles3"]
+transform = Transform( 7.61529, 0, 0, 0, 1, 0, 0, 0, 2.94512, 0, 0.583543, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="CSGBox2" type="CSGBox" parent="Obstacles11/Obstacles3"]
+transform = Transform( 5.91529, 0, 0, 0, 1, 0, 0, 0, 2.33047, 0, 2.08635, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="CSGBox3" type="CSGBox" parent="Obstacles11/Obstacles3"]
+transform = Transform( 0.906867, 0, 0, 0, 5.40463, 0, 0, 0, 0.4716, 0, 8.17472, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="Obstacles4" type="CSGCombiner" parent="Obstacles11"]
+transform = Transform( 0.16063, 0, 0, 0, 0.461388, 0, 0, 0, 1.42955, 18.9295, 0, 0.596809 )
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="Obstacles11/Obstacles4"]
+transform = Transform( 7.61529, 0, 0, 0, 1, 0, 0, 0, 2.94512, 0, 0.583543, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="CSGBox2" type="CSGBox" parent="Obstacles11/Obstacles4"]
+transform = Transform( 5.91529, 0, 0, 0, 1, 0, 0, 0, 2.33047, 0, 2.08635, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="CSGBox3" type="CSGBox" parent="Obstacles11/Obstacles4"]
+transform = Transform( 0.906867, 0, 0, 0, 5.40463, 0, 0, 0, 0.4716, 0, 8.17472, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="Obstacles5" type="CSGCombiner" parent="Obstacles11"]
+transform = Transform( 0.000577523, 0, 1.42954, 0, 0.461388, 0, -0.160629, 0, 0.00513973, 0.245583, 0, -16.644 )
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="Obstacles11/Obstacles5"]
+transform = Transform( 7.61529, 0, 0, 0, 1, 0, 0, 0, 2.94512, 0, 0.583543, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="CSGBox2" type="CSGBox" parent="Obstacles11/Obstacles5"]
+transform = Transform( 5.91529, 0, 0, 0, 1, 0, 0, 0, 2.33047, 0, 2.08635, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="CSGBox3" type="CSGBox" parent="Obstacles11/Obstacles5"]
+transform = Transform( 0.906867, 0, 0, 0, 5.40463, 0, 0, 0, 0.4716, 0, 8.17472, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="Obstacles6" type="CSGCombiner" parent="Obstacles11"]
+transform = Transform( 0.000577523, 0, 1.42954, 0, 0.461388, 0, -0.160629, 0, 0.00513973, 0.245583, 0, 15.787 )
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="Obstacles11/Obstacles6"]
+transform = Transform( 7.61529, 0, 0, 0, 1, 0, 0, 0, 2.94512, 0, 0.583543, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="CSGBox2" type="CSGBox" parent="Obstacles11/Obstacles6"]
+transform = Transform( 5.91529, 0, 0, 0, 1, 0, 0, 0, 2.33047, 0, 2.08635, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="CSGBox3" type="CSGBox" parent="Obstacles11/Obstacles6"]
+transform = Transform( 0.906867, 0, 0, 0, 5.40463, 0, 0, 0, 0.4716, 0, 8.17472, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="Obstacles7" type="CSGCombiner" parent="Obstacles11"]
+transform = Transform( -0.0887093, 0, 1.19178, 0, 0.461388, 0, -0.133913, 0, -0.789477, 20.3725, 0, 19.7364 )
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="Obstacles11/Obstacles7"]
+transform = Transform( 7.61529, 0, 0, 0, 1, 0, 0, 0, 2.94512, 0, 0.583543, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="CSGBox2" type="CSGBox" parent="Obstacles11/Obstacles7"]
+transform = Transform( 5.91529, 0, 0, 0, 1, 0, 0, 0, 2.33047, 0, 2.08635, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="CSGBox3" type="CSGBox" parent="Obstacles11/Obstacles7"]
+transform = Transform( 0.906867, 0, 0, 0, 5.40463, 0, 0, 0, 0.4716, 0, 8.17472, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="Obstacles8" type="CSGCombiner" parent="Obstacles11"]
+transform = Transform( -0.0887093, 0, 1.19178, 0, 0.461388, 0, -0.133913, 0, -0.789477, -19.9573, 0, -21.9606 )
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="Obstacles11/Obstacles8"]
+transform = Transform( 7.61529, 0, 0, 0, 1, 0, 0, 0, 2.94512, 0, 0.583543, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="CSGBox2" type="CSGBox" parent="Obstacles11/Obstacles8"]
+transform = Transform( 5.91529, 0, 0, 0, 1, 0, 0, 0, 2.33047, 0, 2.08635, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="CSGBox3" type="CSGBox" parent="Obstacles11/Obstacles8"]
+transform = Transform( 0.906867, 0, 0, 0, 5.40463, 0, 0, 0, 0.4716, 0, 8.17472, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="Obstacles9" type="CSGCombiner" parent="Obstacles11"]
+transform = Transform( 0.0914274, 0, 1.17539, 0, 0.461388, 0, -0.132072, 0, 0.813668, 21.5877, 0, -21.3529 )
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="Obstacles11/Obstacles9"]
+transform = Transform( 7.61529, 0, 0, 0, 1, 0, 0, 0, 2.94512, 0, 0.583543, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="CSGBox2" type="CSGBox" parent="Obstacles11/Obstacles9"]
+transform = Transform( 5.91529, 0, 0, 0, 1, 0, 0, 0, 2.33047, 0, 2.08635, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="CSGBox3" type="CSGBox" parent="Obstacles11/Obstacles9"]
+transform = Transform( 0.906867, 0, 0, 0, 5.40463, 0, 0, 0, 0.4716, 0, 8.17472, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="Obstacles10" type="CSGCombiner" parent="Obstacles11"]
+transform = Transform( 0.0914274, 0, 1.17539, 0, 0.461388, 0, -0.132072, 0, 0.813668, -20.6409, 0, 21.2554 )
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="Obstacles11/Obstacles10"]
+transform = Transform( 7.61529, 0, 0, 0, 1, 0, 0, 0, 2.94512, 0, 0.583543, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="CSGBox2" type="CSGBox" parent="Obstacles11/Obstacles10"]
+transform = Transform( 5.91529, 0, 0, 0, 1, 0, 0, 0, 2.33047, 0, 2.08635, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="CSGBox3" type="CSGBox" parent="Obstacles11/Obstacles10"]
+transform = Transform( 0.906867, 0, 0, 0, 5.40463, 0, 0, 0, 0.4716, 0, 8.17472, -0.666672 )
+depth = 4.46031
+material = SubResource( 7 )
+
+[node name="tank and ammo loot" type="Spatial" parent="."]
+transform = Transform( 0.0200945, 0, 0, 0, 0.0640885, 0, 0, 0, 0.044413, 20.9919, 0, 0 )
+
+[node name="AmmoPickup" parent="tank and ammo loot" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.74166, 1.58354, 1.19707 )
+
+[node name="AmmoPickup6" parent="tank and ammo loot" instance=ExtResource( 3 )]
+transform = Transform( -0.999665, 0, -0.0572396, 0, 1, 0, 0.0117174, 0, -0.999665, -2147.11, 1.58354, 1.19707 )
+
+[node name="AmmoPickup2" parent="tank and ammo loot" instance=ExtResource( 3 )]
+transform = Transform( -0.604545, 0, 1.76059, 0, 1, 0, -0.360407, 0, -0.604545, -140.083, 1.58355, 415.006 )
+
+[node name="AmmoPickup3" parent="tank and ammo loot" instance=ExtResource( 3 )]
+transform = Transform( 0.596241, 0, -1.77438, 0, 1.00001, 0, 0.363229, 0, 0.596241, -1977.01, 1.58355, -448.185 )
+
+[node name="AmmoPickup4" parent="tank and ammo loot" instance=ExtResource( 3 )]
+transform = Transform( 0.599935, 0, 1.76829, 0, 1.00001, 0, -0.361983, 0, 0.599935, -2058.05, 1.58356, 415.006 )
+
+[node name="AmmoPickup5" parent="tank and ammo loot" instance=ExtResource( 3 )]
+transform = Transform( -0.582794, 0, -1.79607, 0, 1.00001, 0, 0.367671, 0, -0.582793, -92.8167, 1.58356, -452.768 )
+
+[node name="tank" parent="tank and ammo loot" instance=ExtResource( 4 )]
+transform = Transform( 0.837452, 0, -172.437, 0, 60.3436, 0, 81.3077, 0, 0.363575, -962.042, -2.06747, -679.958 )

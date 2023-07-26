@@ -1,0 +1,162 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scene/ui/hud/hud_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/Acme-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scene/ui/hud/hud.gd" type="Script" id=3]
+[ext_resource path="res://scene/ui/stamina_bar/stamina_bar.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+script = ExtResource( 3 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -228.0
+margin_right = 236.0
+color = Color( 1, 0, 0, 0.686275 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthUI" type="Label" parent="Background"]
+margin_left = 70.0
+margin_top = 146.0
+margin_right = 174.0
+margin_bottom = 174.0
+rect_pivot_offset = Vector2( 74, 0 )
+custom_fonts/font = ExtResource( 1 )
+text = "Health: 100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WeaponUI" type="Label" parent="Background"]
+margin_left = 69.0
+margin_top = 180.0
+margin_right = 181.0
+margin_bottom = 208.0
+custom_fonts/font = ExtResource( 1 )
+text = "Pistol: 25/50"
+
+[node name="Display" type="ColorRect" parent="Background"]
+anchor_bottom = 1.0
+margin_right = 237.0
+margin_bottom = -94.0
+color = Color( 0, 0, 0, 0.490196 )
+
+[node name="WeaponSlot" type="Label" parent="Background/Display"]
+margin_right = 32.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 1 )
+text = "1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Background/Display"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 3.0
+expand = true
+stretch_mode = 7
+
+[node name="Crosshair" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -3.0
+margin_top = -3.0
+margin_right = 3.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 3, 3 )
+color = Color( 0, 1, 0.976471, 0.686275 )
+
+[node name="Crosshair2" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -2.0
+margin_top = -7.0
+margin_right = 2.0
+margin_bottom = -3.0
+rect_pivot_offset = Vector2( 3, 3 )
+color = Color( 0, 1, 0.976471, 0.686275 )
+
+[node name="Crosshair5" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -2.0
+margin_top = 3.0
+margin_right = 2.0
+margin_bottom = 7.0
+rect_pivot_offset = Vector2( 3, 3 )
+color = Color( 0, 1, 0.976471, 0.686275 )
+
+[node name="Crosshair3" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 3.0
+margin_top = -2.0
+margin_right = 8.0
+margin_bottom = 2.0
+rect_pivot_offset = Vector2( 3, 3 )
+color = Color( 0, 1, 0.976471, 0.686275 )
+
+[node name="Crosshair4" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -2.0
+margin_right = -3.0
+margin_bottom = 2.0
+rect_pivot_offset = Vector2( 3, 3 )
+color = Color( 0, 1, 0.976471, 0.686275 )
+
+[node name="InteractionPrompt" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -10.0
+margin_top = -10.0
+margin_right = 10.0
+margin_bottom = 10.0
+rect_pivot_offset = Vector2( 10, 10 )
+color = Color( 0, 0, 0, 0.588235 )
+
+[node name="Key" type="Label" parent="InteractionPrompt"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 3.0
+text = "E"
+align = 1
+valign = 1
+
+[node name="Description" type="Label" parent="InteractionPrompt"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 24.8541
+margin_top = 3.0
+margin_right = 24.8541
+text = "Interact"
+valign = 1
+
+[node name="StaminaBar" parent="." instance=ExtResource( 4 )]
